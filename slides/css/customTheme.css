@@ -1,3 +1,23 @@
+span.head {
+  text-align: center;
+  font-size: 0.5em;
+  width: 100%;
+  margin: 0 auto;
+  display:block;
+  margin: 2px;
+  text-shadow: 
+  0px 2px rgba(0, 0, 0, 0.2),
+  0px -2px rgba(0, 0, 0, 0.2),
+  2px 2px rgba(0, 0, 0, 0.2),
+  2px -2px rgba(0, 0, 0, 0.2) !important
+  ;
+}
+
+img.transparent {
+  background: transparent;
+  border-radius: inherit;
+}
+
 body {
 	font-family: 'Inconsolata', Sans-serif;
   font-weight: 400;
@@ -5,19 +25,19 @@ body {
 }
 
 h1 {
-  font-size: 4em !important;
+  font-size: 3em !important;
 }
 
 h2 {
-  font-size: 3.5em !important;
+  font-size: 2.8em !important;
 }
 
 h3 {
-  font-size: 3.0em !important;
+  font-size: 2.5em !important;
 }
 
 h4 {
-  font-size: 2.5em !important;
+  font-size: 2.4em !important;
 }
 
 h5 {
@@ -90,10 +110,6 @@ h6 {
 img {
   margin: 10px !important;
   border-radius: 10px !important;
-}
-
-.zoom-2x {
-  zoom: 200%;
 }
 
 .stroke {

@@ -7,28 +7,28 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <title>Meteor</title>
+  <meta descrition="Une présentation sur Meteor par GabLeRoux">
   <link href='http://fonts.googleapis.com/css?family=Inconsolata:400,700' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="bower_components/reveal.js/css/reveal.min.css">
-  
   <link rel="stylesheet" href="css/customTheme.css">
+  <link rel="stylesheet" href="bower_components/reveal.js/lib/css/zenburn.css">
   
 </head>
 <body>
   <!--[if lt IE 7]>
-    <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+    <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a target="_blank" href="http://browsehappy.com/">upgrade your browser</a> or <a target="_blank" href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
   <![endif]-->
+  <span class="head">meteor.gableroux.com</span>
   <div class="reveal">
     <div class="slides">
+      <section data-background="img/universe.png" data-state="bg-dark">
+        <h1>Meteor</h1>
 
-      <section data-markdown data-state="bg-dark">
-        # Meteor
-
-        Gabriel Le Breton [ @GabLeRoux ](http://twitter.com/GabLeRoux)
-
-        SAG-LAC IO
+        Gabriel Le Breton <a href="http://twitter.com/GabLeRoux">@GabLeRoux</a>
+        <a href="http://saglac.io">SAG-LAC IO</a>
       </section>
 
-      <section data-markdown data-state="bg-dark">
+      <section data-background="img/universe.png" data-markdown data-state="bg-dark">
         # C'est quoi Meteor?
       </section>
 
@@ -50,11 +50,11 @@
         # Ça fait pas ça
       </section>
 
-      <section data-markdown data-state="bg-bright">
+      <section data-background="img/universe.png" data-markdown data-state="bg-dark">
         # Framework javascript pour web apps
       </section>
 
-      <section data-markdown data-state="bg-bright">
+      <section data-background="img/universe.png" data-markdown data-state="bg-dark">
         # Brièvement
         * Client + Serveur
         * Rafraîchissement automatique
@@ -64,18 +64,16 @@
         * ***HOT CODE PUSH*** (oui caps gras italique)
       </section>
 
-      <section data-markdown data-state="bg-bright zoom-2x">
-        # Quoi?
-        ![](img/omagad-omagad-omagad.gif)
+      <section data-background="img/anims/omagad-omagad-omagad.gif" data-state="bg-dark">
+        <h1>Quoi?</h1>
       </section>
 
       <section data-markdown data-state="bg-bright">
-        # Essayons-le
+        # Passons à l'action
       </section>
 
-      <section data-markdown data-state="bg-bright">
-        # 1
-        ## Installation
+      <section data-background="img/anims/badass.gif" data-state="bg-dark">
+        <h3>Installation Time!</h3>
       </section>
 
       <section data-background="img/install/1.png" data-state="bg-bright"></section>
@@ -87,21 +85,195 @@
       <section data-background="img/install/7.png" data-state="bg-bright"></section>
       <section data-background="img/install/8.png" data-state="bg-bright"></section>
 
-      <section data-markdown data-state="bg-bright">
-        # 2
-        ## Test local
-      </section>
+      <section data-background="img/anims/not-impressed.gif"></section>
 
       <section data-background="img/install/9.png" data-state="bg-bright"></section>
 
-      <section data-background="img/not-impressed.gif"></section>
+      <section><h1>Demo Time!</h1></section>
 
-      <section><a href="http://meteor.gableroux.com/">Essayons-le ensemble!</a></section>
+      <section data-background="img/anims/spock-plz.gif">
+        <a style="border-radius: 10px; border: 1px solid red; color: white; background-color: rgba(200, 0, 0, 0.4); padding: 10px;" target="_blank" href="http://leaderboard.gableroux.com/">Leaderboard Demo</a>
+      </section>
+
+      <section data-background="img/anims/badass-fire.gif" style="color: white;">
+        <h3>Oh yeah</h3>
+      </section>
 
       <section>
-      Pour pousser sur Heroku
+        <p>Regardons un peu le code maintenant :)</p>
+      </section>
 
-      <a href="https://github.com/jordansissel/heroku-buildpack-meteor">heroku-buildpack-meteor</a>
+      <section data-background="img/anims/wat.gif"></section>
+
+      <section data-background="#440000" style="color: white">
+      <h2>leaderboard.js</h2>
+<pre>
+<code>
+// Set up a collection to contain player information. On the server,
+// it is backed by a MongoDB collection named "players".
+
+Players = new Meteor.Collection("players");
+</code>
+</pre>
+      </section>
+
+      <section data-background="#440000" style="color: white">
+<pre>
+<code>
+if (Meteor.isClient) {
+  Template.leaderboard.players = function () {
+    return Players.find({}, {sort: {score: -1, name: 1}});
+  };
+
+  Template.leaderboard.selected_name = function () {
+    var player = Players.findOne(Session.get("selected_player"));
+    return player &amp;&amp; player.name;
+  };
+
+  Template.player.selected = function () {
+    return Session.equals("selected_player", this._id) ? "selected" : '';
+  };
+</code>
+</pre>
+      </section>
+
+
+      <section data-background="#440000" style="color: white">
+<pre>
+<code>
+ Template.leaderboard.events({
+    'click input.inc': function () {
+      Players.update(Session.get("selected_player"), {$inc: {score: 5}});
+    }
+  });
+
+  Template.player.events({
+    'click': function () {
+      Session.set("selected_player", this._id);
+    }
+  });
+}
+</code>
+</pre>
+      </section>
+
+            <section data-background="#440000" style="color: white">
+<pre>
+<code>
+// On server startup, create some players if the database is empty.
+if (Meteor.isServer) {
+  Meteor.startup(function () {
+    if (Players.find().count() === 0) {
+      var names = ["Ada Lovelace",
+                   "Grace Hopper",
+                   "Marie Curie",
+                   "Carl Friedrich Gauss",
+                   "Nikola Tesla",
+                   "Claude Shannon"];
+      for (var i = 0; i &lt; names.length; i++)
+        Players.insert({name: names[i], score: Math.floor(Random.fraction()*10)*5});
+    }
+  });
+}
+
+</code>
+</pre>
+      </section>
+
+      <section data-background="img/anims/really-works.gif" style="color: white"></section>
+
+      <section data-state="bg-dark">
+        <h2>Hébergement</h2>
+        <p>Plusieurs solutions</p>
+      </section>
+
+      <section data-state="bg-dark">
+        
+        <ul>
+          <li>VPS, amazone, etc.</li>
+          <ul><li>Requiert un accès à NodeJs</li></ul>
+        </ul>
+      </section>
+
+      <section data-background="img/anims/not.gif" data-state="bg-dark"></section>
+
+      <section data-state="bg-dark">
+          <li>Serveurs Meteor (Gratuit)</li>
+          <ul><li>meteor deploy nom_de_site.meteor.com</li></ul>
+      </section>
+
+      <section data-background="img/anims/hmm-maybe.gif"></section>
+      
+      <section data-background="#5f5d85" style="color: #1f1b3c">
+        <a href="http://www.heroku.com"><img class="transparent" src="img/logos/heroku.png" alt="Heroku"></a>
+      </section>
+
+      <section data-background="img/anims/obama-oh-yeah.gif"></section>
+
+      <section data-background="#5f5d85" style="color: white">
+
+      <a href="http://www.heroku.com"><img class="transparent" src="img/logos/heroku.png" alt="Heroku"></a>
+      <p>
+        <a target="_blank" href="https://github.com/jordansissel/heroku-buildpack-meteor">heroku-buildpack-meteor</a>
+      </p>
+
+      <p>Nouvelle application</p>
+      <pre>heroku create --stack cedar --buildpack https://github.com/oortcloud/heroku-buildpack-meteorite.git</pre>
+      <p>Application existante</p>
+      <pre>heroku config:add BUILDPACK_URL=https://github.com/oortcloud/heroku-buildpack-meteorite.git</pre>
+
+      </section>
+
+
+      <section data-background="#EB5825" style="color: white">
+      <h1>Autres exemples live</h1>
+      <ul>
+        <li><a target="_blank" href="http://leaderboard.gableroux.com/">Leaderboard</a></li>
+        <li><a target="_blank" href="http://parties.gableroux.com/">parties</a></li>
+        <li><a target="_blank" href="http://todos.gableroux.com/">todos</a></li>
+        <li><a target="_blank" href="http://wordplay.gableroux.com/">wordplay</a></li>
+      </ul>
+      </section>
+
+      <section data-background="#EB5825" style="color: white">
+        <h3>Application réelle</h3>
+        <h4><a href="http://lan.aemi.ca/">Lan AEEI-UQAC A13</a></h4>
+      </section>
+
+      <section data-background="img/lan/1.png" data-state="bg-bright"></section>
+      <section data-background="img/lan/2.png" data-state="bg-bright"></section>
+      <section data-background="img/lan/3.png" data-state="bg-bright"></section>
+      <section data-background="img/lan/4.png" data-state="bg-bright"></section>
+      <section data-background="img/lan/5.png" data-state="bg-bright"></section>
+      <section data-background="img/lan/6.png" data-state="bg-bright"></section>
+      <section data-background="img/lan/7.png" data-state="bg-bright"></section>
+
+      <section data-background="img/anims/thumbs-up-story.gif"></section>
+
+      <section data-background="#EB5825" style="color: white">
+        <h1><a href="http://oortcloud.github.io/meteorite/">Meteorite</a> / <a href="https://atmosphere.meteor.com/">Atmoshpere</a></h1>
+      </section>
+
+      <section data-background="img/atmosphere.png" data-state="bg-bright"></section>
+      <section data-background="img/atmosphere-map.png" data-state="bg-bright"></section>
+      <section data-background="img/atmosphere-2.0.png" data-state="bg-bright"></section>
+
+      <section data-background="#FFDEB4" style="color: #0F8DCC">
+      <h1>Ressources</h1>
+      <ul>
+        <li><a target="_blank" href="http://www.meteor.com/">Meteor</a> Framework</li>
+        <li><a target="_blank" href="http://oortcloud.github.io/meteorite/">Meteorite</a> Gestionnaire de packet avancé</li>
+        <li><a target="_blank" href="http://www.heroku.com/">Heroku</a> Hébergement d'applications web</li>
+        <li><a target="_blank" href="http://madewith.meteor.com/">Made With Meteor</a> Exemples (parfois avec code source) d'applications Meteor</li>
+        <li><a target="_blank" href="http://www.meteor.com/gallery">Gallerie Meteor</a> </li>
+      </ul>
+      </section>
+
+      <section data-background="img/anims/deal-with-it.gif"></section>
+
+      <section data-background="img/universe.png" data-state="bg-dark">
+        <h1>Merci!</h1>
+        <h2>Questions?</h2>
       </section>
 
     <div>
@@ -116,6 +288,7 @@
     height: 768,
     transition: 'fade',
     history: true,
+    loop: true,
     backgroundTransition: 'defautl',
     rollingLinks: true,
     dependencies: [
