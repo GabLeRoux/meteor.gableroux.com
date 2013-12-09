@@ -49,4 +49,5 @@ module.exports = function (grunt) {
   });
  
   grunt.registerTask('default', ['connect:livereload', 'open', 'watch']);
+  grunt.registerTask('heroku:production', ['connect']);
 };
