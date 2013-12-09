@@ -42,7 +42,7 @@ module.exports = function (grunt) {
       },
       heroku: {
         options: {
-          port: 9000,
+          port: process.env.PORT || 3000
           base:'slides',
           keepalive: true,
         // change this to '0.0.0.0' to access the server from outside
