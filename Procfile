@@ -1,1 +1,1 @@
-web: ./node_modules/grunt/.bin/grunt heroku:production
+web: ./node_modules/.bin/grunt heroku:production
