@@ -44,6 +44,7 @@ module.exports = function (grunt) {
         options: {
           port: 9000,
           base:'slides',
+          keepalive: true
         // change this to '0.0.0.0' to access the server from outside
         hostname: '0.0.0.0'
       },
