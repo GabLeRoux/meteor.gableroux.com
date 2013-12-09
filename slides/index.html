@@ -1,0 +1,144 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Meteor</title>
+  <link href='http://fonts.googleapis.com/css?family=Inconsolata:400,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="bower_components/reveal.js/css/reveal.min.css">
+  
+  <link rel="stylesheet" href="css/customTheme.css">
+  
+</head>
+<body>
+  <!--[if lt IE 7]>
+    <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+  <![endif]-->
+  <div class="reveal">
+    <div class="slides">
+
+      <section data-markdown data-state="bg-dark">
+        # Meteor
+
+        Gabriel Le Breton [ @GabLeRoux ](http://twitter.com/GabLeRoux)
+
+        SAG-LAC IO
+      </section>
+
+      <section data-markdown data-state="bg-dark">
+        # C'est quoi Meteor?
+      </section>
+
+      <section data-markdown data-state="bg-dark stroke" data-background="img/meteor-beer.jpg">
+        # C'est pas ça
+        ![](img/meteor-beer-transparent.png)
+      </section>
+
+      <section data-markdown data-state="stroke" data-background="img/meteor-space.jpg">
+        # Pas ça non plus
+      </section>
+
+      <section data-markdown data-state="bg-bright">
+        # Ça fait quoi?
+        ![](img/xkcd-meteor.png)
+      </section>
+
+       <section data-markdown data-background="img/meteor-crater.jpg" data-state="bg-bright stroke">
+        # Ça fait pas ça
+      </section>
+
+      <section data-markdown data-state="bg-bright">
+        # Framework javascript pour web apps
+      </section>
+
+      <section data-markdown data-state="bg-bright">
+        # Brièvement
+        * Client + Serveur
+        * Rafraîchissement automatique
+        * Synchronisation de données
+        * Compensation de latence
+        * Système de bundle
+        * ***HOT CODE PUSH*** (oui caps gras italique)
+      </section>
+
+      <section data-markdown data-state="bg-bright zoom-2x">
+        # Quoi?
+        ![](img/omagad-omagad-omagad.gif)
+      </section>
+
+      <section data-markdown data-state="bg-bright">
+        # Essayons-le
+      </section>
+
+      <section data-markdown data-state="bg-bright">
+        # 1
+        ## Installation
+      </section>
+
+      <section data-background="img/install/1.png" data-state="bg-bright"></section>
+      <section data-background="img/install/2.png" data-state="bg-bright"></section>
+      <section data-background="img/install/3.png" data-state="bg-bright"></section>
+      <section data-background="img/install/4.png" data-state="bg-bright"></section>
+      <section data-background="img/install/5.png" data-state="bg-bright"></section>
+      <section data-background="img/install/6.png" data-state="bg-bright"></section>
+      <section data-background="img/install/7.png" data-state="bg-bright"></section>
+      <section data-background="img/install/8.png" data-state="bg-bright"></section>
+
+      <section data-markdown data-state="bg-bright">
+        # 2
+        ## Test local
+      </section>
+
+      <section data-background="img/install/9.png" data-state="bg-bright"></section>
+
+      <section data-background="img/not-impressed.gif"></section>
+
+      <section><a href="http://meteor.gableroux.com/">Essayons-le ensemble!</a></section>
+
+      <section>
+      Pour pousser sur Heroku
+
+      <a href="https://github.com/jordansissel/heroku-buildpack-meteor">heroku-buildpack-meteor</a>
+      </section>
+
+    <div>
+  </div>
+
+  <script src="bower_components/reveal.js/lib/js/head.min.js"></script>
+  <script src="bower_components/reveal.js/js/reveal.min.js"></script>
+
+  <script>
+   Reveal.initialize({
+    width: 1024,
+    height: 768,
+    transition: 'fade',
+    history: true,
+    backgroundTransition: 'defautl',
+    rollingLinks: true,
+    dependencies: [
+        // Cross-browser shim that fully implements classList - https://github.com/eligrey/classList.js/
+        { src: 'bower_components/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+
+        // Interpret Markdown in <section> elements
+        { src: 'bower_components/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+        { src: 'bower_components/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+
+        // Syntax highlight for <code> elements
+        { src: 'bower_components/reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+
+        // Zoom in and out with Alt+click
+        { src: 'bower_components/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+
+        // Speaker notes
+        { src: 'bower_components/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+
+        // Remote control your reveal.js presentation using a touch device
+        { src: 'bower_components/reveal.js/plugin/remotes/remotes.js', async: false, condition: function() { return !!document.body.classList; } }
+    ]
+  });
+  </script>
+</body>
+</html>
