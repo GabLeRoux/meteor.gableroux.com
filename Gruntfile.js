@@ -40,14 +40,6 @@ module.exports = function (grunt) {
           }
         }
       },
-      heroku: {
-        options: {
-          port: process.env.PORT || 3000,
-          base:'slides',
-          keepalive: true,
-        // change this to '0.0.0.0' to access the server from outside
-        hostname: '0.0.0.0'
-      },
       }
     },
     open: {
@@ -58,5 +50,4 @@ module.exports = function (grunt) {
   });
  
   grunt.registerTask('default', ['connect:livereload', 'open', 'watch']);
-  grunt.registerTask('heroku:production', ['connect:heroku']);
 };
