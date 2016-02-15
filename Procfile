@@ -1,1 +1,1 @@
-web: node app
+web:i npm start
