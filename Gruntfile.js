@@ -2,14 +2,16 @@
 'use strict';
 var LIVERELOAD_PORT = 8080;
 var lrSnippet = require('connect-livereload')({port: LIVERELOAD_PORT});
+
 var mountFolder = function (connect, dir) {
   return connect.static(require('path').resolve(dir));
 };
- 
+
 module.exports = function (grunt) {
   // load all grunt tasks
   require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
- 
+  grunt.loadNpmTasks('grunt-gh-pages');
+
   grunt.initConfig({
     watch: {
       options: {
@@ -26,7 +28,7 @@ module.exports = function (grunt) {
     connect: {
       options: {
         port: 9000,
-        base:'slides',
+        base: 'slides',
         // change this to '0.0.0.0' to access the server from outside
         hostname: '0.0.0.0'
       },
@@ -39,15 +41,21 @@ module.exports = function (grunt) {
             ];
           }
         }
-      },
       }
     },
     open: {
       server: {
         path: 'http://localhost:<%= connect.options.port %>/slides/'
       }
+    },
+    'gh-pages': {
+      options: {
+        base: 'slides'
+      },
+      src: ['**']
     }
   });
- 
+
   grunt.registerTask('default', ['connect:livereload', 'open', 'watch']);
+  grunt.registerTask('deploy', ['gh-pages']);
 };
